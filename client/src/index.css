@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  padding: 30px;
+}
+body#body.info {
+    background: rgba(0,0,0,0.4);
+}
+header.container {
+    margin-bottom: 30px;
+    height: 120px;
+}
+.btn {
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+}
+
+.flex {
+    display: flex;
+}
+.rezepte-container {
+    flex-wrap: wrap;
+    height: 180px;
+}
+.rezept {
+    position: relative;
+    width: 279px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;    
+}
+.rezept-img {
+    position: absolute;
+    z-index: -1;
+}
+[class^="rezept-"] >.flex {
+    justify-content: center;
+}
+.rezept-title p {
+    position: absolute;
+    right: 30px;
+}
+
+/*form*/
+.add-form {
+    margin-bottom: 30px;
+}
+.form-control {
+    margin: 20px 0;
+}
+.form-control label {
+    display: block;
+}
+.form-control input {
+    height: 40px;
+}
+.form-control input,
+.form-control textarea {
+    width: 50%;
+    margin: 5px;
+    padding: 3px 7px;
+    font-size: 16px;
+}

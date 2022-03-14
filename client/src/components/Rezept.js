@@ -5,7 +5,7 @@ const Rezept = ( {rezept, onDelete} ) => {
         <div className='rezept'>
             <div className='rezept-img'>
                 <img 
-                    src={rezept.image[0].name ? '/images/' + rezept.image[0].name : '/images/default.png'} 
+                    src={rezept.image.name ? '/images/' + rezept.image.name : '/images/default.png'} 
                     alt={`${rezept.title} Bild`} />
             </div>
             <div className='rezept-title flex'>

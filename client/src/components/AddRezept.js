@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 //import api from "./Api";
 
@@ -8,24 +8,14 @@ const AddRezept = ({ onAdd }) => {
     const [info, setInfo] = useState('');
     const [link, setLink] = useState('');
     const [text, setText] = useState('');
-    const [image, setImage] = useState(null);
+    const [image, setImage] = useState('');
     //Datum?
 
-    /*const submitForm = (e) => {
-        e.preventDefault();
-        
-         const formData = new FormData();
-        //formData.append("name", name);  
-        formData.append("file", image);
-      
-        axios     
-          .post('/images', formData)   
-          .then((res) => {  
-            console.log(res);
-            //alert("File Upload success");   
-          })    
-          .catch((err) => console.log("Error", err));   
-      }; */
+    const onChange = (e) => {
+        setImage(e.target.files[0]);
+    }
+    //console.log(image);
+
 
         const onSubmit = async (e) => {
             e.preventDefault();
@@ -37,7 +27,7 @@ const AddRezept = ({ onAdd }) => {
             setInfo('');
             setLink('');
             setText('');
-            setImage('');
+            //setImage('');
 
             const formData = new FormData();
             //formData.append("name", name);  
@@ -50,7 +40,7 @@ const AddRezept = ({ onAdd }) => {
                   }
                 });
             
-
+                //throw new Error('debug');
 
         }
 
@@ -93,19 +83,15 @@ const AddRezept = ({ onAdd }) => {
                     onChange={(e) => setLink(e.target.value)}
                     />
             </div>
-            {/*<FileUploader
-                onFileSelectSuccess={(file) => setImage(file)}
-                onFileSelectError={({ error }) => alert(error)}
-            />*/ }
-
             <div className='form-control'>
                 <label>Bild hinzufügen</label>
                 <input 
                     type='file'                    
                     acept='image/*'
-                    onChange={(e) => setImage( [...e.target.files] )}
+                    onChange={ onChange }
                     />
             </div>
+
             <input style={{background: 'green'}} className='btn' type='submit' value='Speichern' />
 
         </form>

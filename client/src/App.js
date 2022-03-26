@@ -39,7 +39,9 @@ function App() {
         text: 'Zubereitung etc',
         image: 'default.png'
     }
-])
+  ]);
+
+  console.log(rezepte);
 
 // Add Rezept
   const addRezept = (rezept) => {

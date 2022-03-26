@@ -1,34 +1,55 @@
-import React, {useRef} from 'react';
+import React from 'react';
+import axios, { post } from 'axios';
 
-const FileUploader = ( {onFileSelect} ) => {
+//von hier abgeleitet: https://gist.github.com/AshikNesin/e44b1950f6a24cfcd85330ffc1713513/revisions
 
-    const fileInput = useRef(null);
+class FileUploader extends React.Component {
 
-    const handleFileInput = (e) => {
+  constructor(props) {
+    super(props);
+    this.state ={
+      file:null
+    }
+    this.onFormSubmit = this.onFormSubmit.bind(this)
+    this.onChange = this.onChange.bind(this)
+    this.fileUpload = this.fileUpload.bind(this)
+  }
+  onFormSubmit(e){
+    e.preventDefault() // Stop form submit
+    this.fileUpload(this.state.file).then((response)=>{
+      console.log(response.data);
+    })
+  }
+  onChange(e) {
+    this.setState({file:e.target.files[0]})
+  }
+  fileUpload(file){
+    const url = '/images';
+    const formData = new FormData();
+    formData.append('file',file)
+    const config = {
+        credentials: 'include',
+        method: 'POST',
+        headers: {
+            'content-type': 'multipart/form-data'
+        }
+    }
+    return  post(url, formData,config)
+  }
 
-    // handle validations      
-        const file = e.target.files[0];
-
-/*         if (file.size > 4096) {
-            onFileSelectError({ error: "File size cannot exceed more than 4MB" });
-        } else {
-            onFileSelectSuccess(file);
-        } */
-    };
-
+  render() {
     return (
-
-        <div className="form-control">
-            <label>Bild hinzufügen</label>
-            <input type="file" onChange={handleFileInput} />
-            <button 
-                style={{background: 'green'}}
-                onClick={e => fileInput.current && fileInput.current.click()} 
-                className="btn"
-                value='Speichern'>Speichern
-            </button>
-        </div>
-    )
+        <form onSubmit={ this.onFormSubmit }>
+            <div className='form-control'>
+                <label>Bild hinzufügen</label>
+                <input type="file" onChange={this.onChange} />
+            </div>
+            <button style={{background: 'green'}} className='btn' type="submit">Upload</button>
+        </form>
+   )
+  }
 }
+
+
 
 export default FileUploader

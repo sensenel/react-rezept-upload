@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import Header from './components/Header';
 import Rezepte from './components/Rezepte';
-import AddRezept from './components/AddRezept';
+//import AddRezept from './components/AddRezept';
+import FileUploader from './components/FileUploader';
 
 function App() {
 
@@ -70,7 +71,8 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <AddRezept onAdd={addRezept}/>
+{/*       <AddRezept onAdd={addRezept}/> */}
+      <FileUploader onAdd={addRezept}/>
       <div className='rezepte-container flex'>
         { rezepte.length > 0 ? 
           <Rezepte rezepte={rezepte} 

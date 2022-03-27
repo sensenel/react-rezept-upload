@@ -1,13 +1,13 @@
 import { FaTimes } from 'react-icons/fa';
 
 const Rezept = ( {rezept, onDelete} ) => {
-    console.log(rezept.image)
+    console.log(rezept.image.name);
 
     return (
         <div className='rezept'>
             <div className='rezept-img'>
                 <img 
-                    src={rezept.image ? '/images/' + rezept.image : '/images/default.png'} 
+                    src={rezept.image.name ? '/images/' + rezept.image.name : '/images/default.png'} 
                     alt={`${rezept.title} Bild`} />
             </div>
             <div className='rezept-title flex'>

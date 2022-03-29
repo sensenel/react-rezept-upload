@@ -3,6 +3,14 @@ import axios, { post } from 'axios';
 
 //von hier abgeleitet: https://gist.github.com/AshikNesin/e44b1950f6a24cfcd85330ffc1713513/revisions
 
+/* WICHTIG:
+ * per default muss im dev-Server der pfad in das files hochgeladen werden, von der Watch-Liste genommen werden!
+ * reload Page nach Upload deaktivieren: 
+ * /Applications/MAMP/htdocs/react-rezepte/react-rezept-upload/client/node_modules/webpack/package.json
+ * "<rootDir>/.public/images"
+ * UPDATE: bisher immer noch sehr willkürlich und unzuverlässig 
+ */
+
 //class FileUploader extends React.Component {
 const FileUploader = ( {onAdd} ) => {
 /*   constructor(props) {
@@ -29,7 +37,7 @@ const FileUploader = ( {onAdd} ) => {
 	onAdd( {title, info, link, text, image} );
 
     fileUpload(image).then((response)=>{
-      console.log(response.data);
+      //console.log(response.data);
     })
   }
   const onChange = (e) => {
